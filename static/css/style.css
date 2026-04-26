@@ -1,0 +1,414 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg: #faf8f3;
+    --color: #1c1a16;
+    --accent: #6b4c2a;
+    --error: #a33a2a;
+    --muted: rgba(28,26,22,0.12);
+}
+
+
+/* TODO: Terminar de implementar. */
+[data-theme="dark"] {
+    --bg: #18161a;
+    --color: #e8e0d0;
+    --accent: #c9a96e;
+    --error: #c9614a;
+    --muted: #504c58;
+    body {
+
+        background-image: 
+        linear-gradient(rgba(200,180,140,0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,180,140,0.08) 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-color: var(--bg);
+        color: var(--color);
+        font-family: 'Lora', serif;
+        min-height: 100vh;
+    }
+
+    .key {
+        box-shadow: 0 4px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    .theme-btn {
+        box-shadow: 0 3px 0 rgba(255, 255, 255, 0.15);
+    }
+    
+    #start-btn {
+        box-shadow: 0 4px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-primary {
+        box-shadow: 0 4px 0 rgba(255, 255, 255, 0.35);
+    }
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    /* height: 100vh; */
+
+    background-image: 
+    linear-gradient(rgba(100,80,40,0.09) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(100,80,40,0.09) 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: var(--bg);
+    color: var(--color);
+    font-family: 'Lora', serif;
+    min-height: 100vh;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 32px;
+    /* min-height: 100vh; */
+    max-width: 420px;
+    margin: 0 auto;
+    /* flex: 1; */
+    flex: 1 0 auto;
+    /* overflow: hidden; */
+
+}
+
+
+.theme-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+.theme-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 16px;
+    border: 1.5px solid var(--muted);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: var(--color);
+    box-shadow: 0 3px 0 rgba(0,0,0,0.15);
+    transition: transform 0.07s;
+    box-shadow: 0.07s;
+}
+
+#screen-start {
+    padding-inline: 36px 32px;
+}
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.brand {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--accent)
+}
+
+
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 24px;
+}
+
+.game-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 52px;
+    line-height: 1;
+}
+
+.game-subtitle {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 14px;
+    opacity: 0.45;
+}
+
+
+#start-btn:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
+#start-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 48px;
+    background: var(--color);
+    color: var(--bg);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.35);
+    transition: transform 0.07s;
+    box-shadow: 0.07s;
+}
+
+
+/* Estilos para el GAME HEADER */
+
+.game-header {
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.game-header-left {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.game-header-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 26px;
+    line-height: 1.1;
+}
+
+.game-header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+#attempts-display {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    opacity: 0.4;
+}
+
+
+/* Estilos pantalla de juego. */
+
+#screen-game {
+    gap: 8px;
+    /* padding: 16px 24px; */
+    padding: 36px 32px;
+}
+
+.hint-panel {
+    /* padding: 10px 16px; */
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px dashed var(--accent);
+    font-family: 'Lora', serif;
+    font-style: italic;
+    /* font-size: 13px; */
+    font-size: 12px;
+    color: var(--accent);
+    text-align: center;
+    opacity: 0.75;
+    max-width: 320px;
+    margin-top: 30px;
+    margin-bottom: 80px;
+}
+
+.btn-primary:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
+.btn-primary {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 16px 48px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0,0.35);
+    transition: transform 0.07s;
+    box-shadow: 0.07s;
+}
+
+
+.keyboard-row {
+    display: flex;
+    justify-content: center;
+    /* gap: 5px; */
+    gap: 3px;
+    /* margin-bottom: 5px; */
+    margin-bottom: 3px;
+}
+
+.key:active {
+    transform: translateY(3px);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.35);
+}
+
+.key {
+    /* width: 34px; */
+    width: 30px;
+    /* height: 38px; */
+    height: 32px;
+    border-radius: 4px;
+    border: none;
+    background: var(--bg);
+    color: var(--color);
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Space Mono', monospace;
+    cursor: pointer;
+    box-shadow: 0 4px 0 rgba(0,0,0, 0.25);
+    transition: transform 0.07s, box-shadow 0.07s
+}
+
+
+
+.key.correct {
+    background: var(--accent);
+    color: #fff;
+    opacity: 0.55;
+}
+
+.key.wrong {
+    background: var(--error);
+    color: #fff;
+    opacity: 0.55;
+}
+
+.key.disabled {
+    cursor: default;
+    box-shadow: none;
+}
+
+
+#word-display span {
+    display: inline-block;
+    width: 36px;
+    height: 44px;
+    font-size: 26px;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    text-align: center;
+    line-height: 44px;
+    border-bottom: 3px solid var(--color);
+    margin: 0 4px;
+}
+
+#result-word span {
+    display: inline-block;
+    width: 30px;
+    height: 36px;
+    font-size: 22px;
+    font-weight: 600;
+    font-family: 'Lora', serif;
+    text-align: center;
+    line-height: 36px;
+    border-bottom: 3px solid var(--accent);
+    margin: 0 4px;
+}
+
+.result-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 50px;
+}
+
+#screen-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    gap: 32px;
+    text-align: center;
+}
+
+#result-word {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#play-again-btn {
+    margin-top: 10px;
+}
+
+#start-hangman {
+    opacity: 0.15;
+}
+
+
+
+.social-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 0;
+    border-top: 1px solid var(--muted);
+    margin-top: auto;
+    width: 100%;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    
+
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.social-icons a {
+    color: var(--color);
+    opacity: 0.5;
+    transition: opacity 0.15s;
+}
+
+.social-icons a:hover {
+    opacity: 1;
+}
+
+.footer-credit {
+    font-size: 11px;
+    font-family: 'Space Mono', monospace;
+    color: var(--color);
+    opacity: 0.3;
+    letter-spacing: 1px;
+}
+
+
+#hangman-container svg {
+    margin-top: 120px;
+    /* width: 150px; */
+    width: 120px;
+    height: auto;
+
+}
