@@ -10,28 +10,27 @@
 	</head>
 
 	<body>
-		<!-- Pantalla de inicio. -->
+		<!-- Start screen. -->
 		<div id="screen-start" class="screen">
-			<!-- Barra superior con nombre y botón de cambio de tema. -->
+			<!-- Top bar. -->
 			<div class="top-bar">
 				<span class="brand">JANDORTIZ</span>
 				<button id="theme-toggle" class="theme-btn">☾</button>
 			</div>
 
-			<!-- Contenido central de la página. -->
+			
+			<!-- Main content page. -->
 			<div class="center-content">
 				<div id="start-hangman"></div>
 				<h1 class="game-title">Hangman</h1>
 				<p class="game-subtitle">Guess the word before it's too late.</p>
 				<button id="start-btn">START GAME</button>
 			</div>
-
-		
 		</div>
 
-		<!-- Pantalla del juego. -->
+		<!-- Game page. -->
 		<div id="screen-game" class="screen" style="display:none"> 
-			<!-- Zona del Header. -->
+			<!-- Header zone. -->
 			<div class="game-header">
 				<div class="game-header-left">
 					<span class="brand">JANDORTIZ</span>
@@ -44,26 +43,26 @@
 				</div>
 			</div>
 			
-			<!-- Zona de la imagen del ahorcado. -->
+			<!-- Hangman image zone. -->
 			<div id="hangman-container"></div>
 
-			<!-- Zona de la palabra buscada.  -->
+			<!-- Searched word zone.  -->
 			<div id="word-display"></div>
 
-			<!-- Zona de la pista. -->
+			<!-- Hint zone. -->
 			<div id="hint-panel" class="hint-panel">
 				<span> 💡 </span> <span id="hint-text"></span> 
 			</div>
 
-			<!-- Zona del teclado. -->
+			<!-- Keyboard zone. -->
 			<div id="keyboard"></div>
 
-			<!-- Letras erróneas. -->
+			<!-- Wrong letters div. -->
 			<div id="wrong-letters"></div>
 		</div>
 
 
-		<!-- Pantalla de resultados. -->
+		<!-- Results screen. -->
 		<div id="screen-result" class="screen" style="display:none">
 			<div id="result-content">
 				<div id="result-hangman"></div>
@@ -74,6 +73,7 @@
 			</div>
 
 		</div>
+
 
 		<footer class="social-footer">
 			<div class="social-icons">
@@ -110,10 +110,6 @@
 			<div class="footer-credit">jandortiz · <span id="footer-year"></span></div>
 
 		</footer>
-
-
-
-
 		<script src="js/app.js"></script>			
 	</body>
 </html>
