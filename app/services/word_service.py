@@ -39,6 +39,7 @@ class WordService:
             
             api_response_json = api_response.json()
             print(f'Estoy en _fetch_random_word {api_response_json}')
+            print(f"JSON recibido: {api_response_json}")
             return api_response_json
         except httpx.HTTPError:
             return None
