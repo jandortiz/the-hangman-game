@@ -33,26 +33,16 @@ class WordService:
         """
         try:
             api_response = await self.client.get(url=settings.word_api_url)
+            print(api_response.status_code)
+            if api_response.status_code != 200:
+                return None
+            
             api_response_json = api_response.json()
             print(f'Estoy en _fetch_random_word {api_response_json}')
             return api_response_json
         except httpx.HTTPError:
             return None
 
-    # TODO: Documentar.
-    async def _fetch_word_definition(self, word: str) -> str | None:
-        url = settings.dictionary_api_url + f"/{word}"
-
-        try:
-            api_dict_response = await self.client.get(url)
-            if api_dict_response.status_code == 200:
-                api_dict_response_json = api_dict_response.json()
-                return api_dict_response_json[0]['meanings'][0]['definitions'][0]['definition']
-            else:
-                return None
-        except httpx.HTTPError:
-            return None
-        
 
     # TODO: Documentar.
     def _get_fallback_word(self):
@@ -67,6 +57,7 @@ class WordService:
     #TODO: Documentar.
     async def get_word_with_hint(self):
         word_requested = await self._fetch_random_word()
+        print(f'Estoy en get_word_with_hint() {word_requested["word"]}')
         if(word_requested):
             return {"word": word_requested["word"], "hint": word_requested["hint"]}
         else:
