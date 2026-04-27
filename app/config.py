@@ -12,8 +12,8 @@ load_dotenv()
 
 class Settings:
     def __init__(self):
-        self.word_api_url = os.getenv("WORD_API_URL", "https://random-word-api.herokuapp.com")
-        self.dictionary_api_url = os.getenv("DICTIONARY_API_URL", "https://api.dictionaryapi.dev/api/v2/entries/en")
+        self.word_api_url = os.getenv("WORD_API_URL", "https://www.wordgamedb.com/api/v1/words/random")
+        self.dictionary_api_url = os.getenv("DICTIONARY_API_URL", "https://www.wordgamedb.com/api/v1/words/random")
         self.environment = os.getenv("ENVIRONMENT", "development")
 
 

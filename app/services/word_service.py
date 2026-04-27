@@ -31,12 +31,13 @@ class WordService:
             str: Palabra aleatoria entregada por el API y con la longitud dada.
             None: Si ocurre un error HTTP o la respuesta no es válida.
         """
-        url = settings.word_api_url + "/word" + f"?length={length}"
+        # url = settings.word_api_url + "/word" + f"?length={length}"
+        url = settings.word_api_url
         
         try:
             api_response = await self.client.get(url=url)
             api_response_json = api_response.json()
-            return api_response_json[0]
+            return api_response_json
         except httpx.HTTPError:
             return None
 
@@ -73,9 +74,9 @@ class WordService:
 
         while (intentos < 5):
             word_requested = await self._fetch_random_word(word_randon_length)
-            word_definition = await self._fetch_word_definition(word_requested)
-            if(word_requested and word_definition):
-                return {"word": word_requested, "hint": word_definition}
+            # word_definition = await self._fetch_word_definition(word_requested)
+            if(word_requested):
+                return {"word": word_requested["word"], "hint": word_requested["hint"]}
             else:
                 return self._get_fallback_word()
             
