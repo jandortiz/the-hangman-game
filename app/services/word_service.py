@@ -34,12 +34,13 @@ class WordService:
         try:
             api_response = await self.client.get(url=settings.word_api_url)
             print(f"estoy en _fetch_random_word() {api_response.status_code}")
+            print(f"JSON recibido: {api_response}")
             if api_response.status_code != 200:
                 return None
             
             api_response_json = api_response.json()
             print(f'Estoy en _fetch_random_word {api_response_json}')
-            print(f"JSON recibido: {api_response_json}")
+            
             return api_response_json
         except httpx.HTTPError:
             return None
