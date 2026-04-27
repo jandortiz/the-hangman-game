@@ -69,34 +69,9 @@ class WordService:
     
     #TODO: Documentar.
     async def get_word_with_hint(self):
-        intentos = 0
         word_randon_length = random.randint(4, 16)
-
-        while (intentos < 5):
-            word_requested = await self._fetch_random_word(word_randon_length)
-            # word_definition = await self._fetch_word_definition(word_requested)
-            if(word_requested):
-                return {"word": word_requested["word"], "hint": word_requested["hint"]}
-            else:
-                return self._get_fallback_word()
-            
-            intentos+=1
-
-
-
-
-# async def main():
-#     async with httpx.AsyncClient() as client:
-#         service = WordService(client)
-#         # word_result = await service._fetch_random_word(4)
-#         # word_result_2 = service._get_fallback_word()
-#         # print(f"Palabra obtenida: {word_result_2}")
-#         # dict_result = await service._fetch_word_definition(word_result)
-#         # print(dict_result[0]["meanings"])
-#         dict_result_2 =  await service.get_word_with_hint()
-#         print(dict_result_2)
-        
-
-
-# if __name__=="__main__":
-#     asyncio.run(main())
+        word_requested = await self._fetch_random_word(word_randon_length)
+        if(word_requested):
+            return {"word": word_requested["word"], "hint": word_requested["hint"]}
+        else:
+            return self._get_fallback_word()
