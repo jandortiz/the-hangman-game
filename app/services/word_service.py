@@ -47,6 +47,7 @@ class WordService:
     # TODO: Documentar.
     def _get_fallback_word(self):
         json_path = Path(__file__).parent.parent / "data" / "fallback_words.json"
+        print(f'Estoy en _get_fallback_word() {json_path}')
 
         with open(json_path, "r", encoding="utf-8") as file:
             data = json.load(file)
@@ -57,7 +58,6 @@ class WordService:
     #TODO: Documentar.
     async def get_word_with_hint(self):
         word_requested = await self._fetch_random_word()
-        print(f'Estoy en get_word_with_hint() {word_requested["word"]}')
         if(word_requested):
             return {"word": word_requested["word"], "hint": word_requested["hint"]}
         else:
