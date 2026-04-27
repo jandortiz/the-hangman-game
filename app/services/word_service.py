@@ -18,7 +18,7 @@ class WordService:
         self.client = client
 
     
-    async def _fetch_random_word(self, length: int = 7) -> str | None:
+    async def _fetch_random_word(self) -> str | None:
         """Obtiene una palabra aleatoria desde una API externa.
 
         Realiza una petición HTTP asíncrona para recuperar una palabra con la
@@ -31,12 +31,10 @@ class WordService:
             str: Palabra aleatoria entregada por el API y con la longitud dada.
             None: Si ocurre un error HTTP o la respuesta no es válida.
         """
-        # url = settings.word_api_url + "/word" + f"?length={length}"
-        url = settings.word_api_url
-        
         try:
-            api_response = await self.client.get(url=url)
+            api_response = await self.client.get(url=settings.word_api_url)
             api_response_json = api_response.json()
+            print(f'Estoy en _fetch_random_word {api_response_json}')
             return api_response_json
         except httpx.HTTPError:
             return None
@@ -63,14 +61,12 @@ class WordService:
         with open(json_path, "r", encoding="utf-8") as file:
             data = json.load(file)
             record = random.choice(data)
-
         return record
     
     
     #TODO: Documentar.
     async def get_word_with_hint(self):
-        word_randon_length = random.randint(4, 16)
-        word_requested = await self._fetch_random_word(word_randon_length)
+        word_requested = await self._fetch_random_word()
         if(word_requested):
             return {"word": word_requested["word"], "hint": word_requested["hint"]}
         else:
