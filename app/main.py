@@ -9,7 +9,7 @@ from starlette.staticfiles import StaticFiles
 
 @asynccontextmanager
 async def my_lifespan(app):
-    async with httpx.AsyncClient() as client:
+    async with httpx.AsyncClient(follow_redirects=True) as client:
         app.state.word_service = WordService(client=client)
         yield
 
