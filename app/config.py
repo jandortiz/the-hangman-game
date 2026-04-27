@@ -1,9 +1,9 @@
 """
-En este módulo se crea la clase Settings que permite acceder a las variables
-de entorno en cualquier parte del código. 
+In this module, the Settings class is created to allow access to environment
+variables from anywhere in the code.
 
-Las variables de entorno se cargan inicialmente mediante la función
-load_dotenv(), luego se guardan en las variables definidas en el constructor.
+Environment variables are initially loaded using the load_dotenv() function,
+and then stored in the variables defined in the constructor.
 """
 import os
 from dotenv import load_dotenv
