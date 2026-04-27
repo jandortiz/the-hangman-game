@@ -33,7 +33,7 @@ class WordService:
         """
         try:
             api_response = await self.client.get(url=settings.word_api_url)
-            print(api_response.status_code)
+            print(f"estoy en _fetch_random_word() {api_response.status_code}")
             if api_response.status_code != 200:
                 return None
             
