@@ -2,16 +2,13 @@ from pydantic import BaseModel, Field
 
 
 class GuessRequest(BaseModel):
-    """Esquema que define lo que el front-end envía cuando el jugador intenta
-    una letra.
+    """Defines the information sent by the front-end.
     """
     letter: str = Field(min_length=1, max_length=1, pattern=r"^[a-zA-Z]$")
 
 
-# Esquemas de repuesta.
-
 class NewGameResponse(BaseModel):
-    """Define lo que el back-end responde cuando se crea una partida nueva.
+    """Defines the back-end response to a new game.
     """
     game_id: str
     masked_word: str
@@ -20,7 +17,7 @@ class NewGameResponse(BaseModel):
 
 
 class GuessResponse(BaseModel):
-    """Define lo que el back-end devuelve después de un intento de letra.
+    """Defines the back-end response to a new letter essay.
     """
     status: str
     masked_word: str
@@ -28,15 +25,10 @@ class GuessResponse(BaseModel):
     attempts_remaining: int
     word: str | None = None
     correct: bool
-    
-    
-    
-    
-    
 
 
 class GameStatusResponse(BaseModel):
-    """Define la respuesta del endpoint de estado.
+    """Defines the state endpoint response.
     """
     status: str
     masked_word: str
