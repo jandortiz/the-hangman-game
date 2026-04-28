@@ -3,9 +3,11 @@
 import httpx
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
-from app.services.word_service import WordService
-from app.routers.game import router
 from starlette.staticfiles import StaticFiles
+
+from app.routers.game import router
+from app.services.word_service import WordService
+
 
 
 @asynccontextmanager
