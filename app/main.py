@@ -1,4 +1,5 @@
-
+"""Main entry point to the app.
+"""
 import httpx
 from fastapi import FastAPI
 from contextlib import asynccontextmanager
