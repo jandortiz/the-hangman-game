@@ -12,6 +12,8 @@ load_dotenv()
 
 class Settings:
     def __init__(self):
+        """Allows to use the wordGameDb API.
+        """
         self.word_api_url = os.getenv("WORD_API_URL", "https://www.wordgamedb.com/api/v1/words/random")
         self.dictionary_api_url = os.getenv("DICTIONARY_API_URL", "https://www.wordgamedb.com/api/v1/words/random")
         self.environment = os.getenv("ENVIRONMENT", "development")
