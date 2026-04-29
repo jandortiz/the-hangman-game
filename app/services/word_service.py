@@ -26,6 +26,13 @@ class WordService:
     """
 
     def __init__(self, client: httpx.AsyncClient):
+        """Initializes the WordService.
+
+        Args:
+            client (httpx.AsyncClient): An asynchronous HTTP client instance
+                used to perform API requests.
+        """
+
         self.client = client
 
     
