@@ -62,6 +62,21 @@ class WordService:
 
     # TODO: Documentar.
     def _get_fallback_word(self):
+        """Retrieves a random word from a local fallback dataset.
+
+        Loads a JSON file containing predefined words and hints, then selects
+        one record at random.
+
+        Returns:
+            dict: A dictionary containing:
+                - word (str): The word to guess.
+                - hint (str): A hint associated with the word.
+
+        Notes:
+            - The fallback file is located at `app/data/fallback_words.json`.
+            - This method is used when the external API is unavailable.
+        """
+
         json_path = Path(__file__).parent.parent / "data" / "fallback_words.json"
 
         with open(json_path, "r", encoding="utf-8") as file:
