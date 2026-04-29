@@ -15,12 +15,16 @@ from app.config import settings
 
 
 class WordService:
-    """Representa el servicio que permite consultar palabras aleatorias.
+    """Service for retrieving random words and hints.
+
+    This service attempts to fetch words from an external API. If the API
+    request fails or returns an invalid response, it falls back to a local
+    dataset stored in a JSON file.
 
     Attributes:
-        client: cliente HTTP asíncrono.
+        client (httpx.AsyncClient): Asynchronous HTTP client used to make requests.
     """
-    # TODO: Documentar.
+
     def __init__(self, client: httpx.AsyncClient):
         self.client = client
 
