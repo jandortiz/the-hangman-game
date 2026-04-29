@@ -1,3 +1,11 @@
+"""
+Word service module.
+
+This module provides the WordService class, which is responsible for
+retrieving random words and their hints from an external API. If the API
+is unavailable, it falls back to a local JSON file.
+"""
+
 import json
 import httpx
 import random
