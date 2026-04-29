@@ -36,18 +36,17 @@ class WordService:
         self.client = client
 
     
-    async def _fetch_random_word(self) -> str | None:
-        """Obtiene una palabra aleatoria desde una API externa.
+    async def _fetch_random_word(self) -> dict | None:
+        """Fetches a random word from an external API.
 
-        Realiza una petición HTTP asíncrona para recuperar una palabra con la
-        longitud especificada.
-
-        Args:
-            length: longitud de la palabra a buscar.
+        Performs an asynchronous HTTP GET request to retrieve a word and its hint.
 
         Returns:
-            str: Palabra aleatoria entregada por el API y con la longitud dada.
-            None: Si ocurre un error HTTP o la respuesta no es válida.
+            dict | None: A dictionary containing the word and its hint if the
+            request is successful. Returns None if:
+                - The HTTP response status is not 200.
+                - An HTTP error occurs during the request.
+                - The response body is invalid.
         """
         try:
             api_response = await self.client.get(url=settings.word_api_url)
