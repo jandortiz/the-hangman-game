@@ -9,7 +9,6 @@ is unavailable, it falls back to a local JSON file.
 import json
 import httpx
 import random
-import asyncio
 from pathlib import Path
 from app.config import settings
 
