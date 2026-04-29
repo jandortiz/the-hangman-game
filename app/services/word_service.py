@@ -60,7 +60,6 @@ class WordService:
             return None
 
 
-    # TODO: Documentar.
     def _get_fallback_word(self):
         """Retrieves a random word from a local fallback dataset.
 
