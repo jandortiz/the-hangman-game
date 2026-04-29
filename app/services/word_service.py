@@ -84,9 +84,22 @@ class WordService:
             record = random.choice(data)
         return record
     
-    
-    #TODO: Documentar.
+
     async def get_word_with_hint(self):
+        """Retrieves a word and its hint.
+
+        Attempts to fetch a word from the external API. If the request fails,
+        it falls back to a local dataset.
+
+        Returns:
+            dict: A dictionary containing:
+                - word (str): The word to guess.
+                - hint (str): A hint associated with the word.
+
+        Behavior:
+            - Uses the external API as the primary source.
+            - Falls back to local data if the API request fails or returns None.
+        """
         word_requested = await self._fetch_random_word()
         if(word_requested):
             return {"word": word_requested["word"], "hint": word_requested["hint"]}
