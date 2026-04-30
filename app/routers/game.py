@@ -98,6 +98,27 @@ def create_game_guess(game_id: str, guess: GuessRequest):
 
 @router.get("/{game_id}/status", response_model=GameStatusResponse)
 def get_game_guess(game_id: str):
+    """Retrieves the current status of a game.
+
+    Args:
+        game_id (str): The unique identifier of the game.
+
+    Returns:
+        GameStatusResponse: The current game state including:
+            - status (str): Current game status.
+            - guessed_letters (list): Letters guessed so far.
+            - attempts_remaining (int): Remaining attempts.
+            - hint (str): The hint for the word.
+            - masked_word (str): Current masked word.
+            - word (str, optional): Full word if game is finished.
+
+    Raises:
+        KeyError: If the provided game_id does not exist.
+
+    Behavior:
+        - Retrieves the current game state from GameService.
+        - Does not modify the game state.
+    """
     return game_service.get_game_status(game_id=game_id)
 
 
