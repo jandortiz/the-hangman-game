@@ -1,3 +1,14 @@
+"""
+Game API router module.
+
+This module defines the HTTP endpoints for managing Hangman-style games.
+It includes routes for creating a new game, making guesses, and retrieving
+the current game status.
+
+The router interacts with the GameService for game logic and WordService
+(via application state) for retrieving words and hints.
+"""
+
 from fastapi import APIRouter, Request
 from app.services.game_service import game_service
 from app.schemas.game import NewGameResponse, GuessResponse, GameStatusResponse, GuessRequest
