@@ -24,6 +24,30 @@ router = APIRouter(prefix="/api/game")
 
 @router.post("/new", response_model=NewGameResponse)
 async def create_new_game(request: Request):
+    """Creates a new game.
+
+    This endpoint retrieves a word and hint from the WordService,
+    initializes a new game using the GameService, and returns the
+    initial game state.
+
+    Args:
+        request (Request): FastAPI request object used to access
+            application state, including the WordService instance.
+
+    Returns:
+        NewGameResponse: The initial game state including:
+            - game_id (str): Unique identifier of the game.
+            - status (str): Current game status ("playing").
+            - guessed_letters (list): Empty list at game start.
+            - attempts_remaining (int): Initial number of attempts.
+            - hint (str): Hint for the word.
+            - masked_word (str): Masked representation of the word.
+
+    Behavior:
+        - Fetches a word and hint asynchronously.
+        - Creates a new game instance.
+        - Returns the initialized game state with the game ID.
+    """
     word_data = await request.app.state.word_service.get_word_with_hint()
 
     new_game_id = game_service.create_game(word=word_data['word'], hint=word_data['hint'])
