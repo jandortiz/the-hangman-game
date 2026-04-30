@@ -11,7 +11,12 @@ The router interacts with the GameService for game logic and WordService
 
 from fastapi import APIRouter, Request
 from app.services.game_service import game_service
-from app.schemas.game import NewGameResponse, GuessResponse, GameStatusResponse, GuessRequest
+from app.schemas.game import (
+    NewGameResponse,
+    GuessResponse,
+    GameStatusResponse,
+    GuessRequest,
+)
 
 
 router = APIRouter(prefix="/api/game")
