@@ -59,6 +59,34 @@ async def create_new_game(request: Request):
 
 @router.post("/{game_id}/guess", response_model=GuessResponse)
 def create_game_guess(game_id: str, guess: GuessRequest):
+    """Submits a letter guess for a specific game.
+
+    This endpoint processes a player's guessed letter, updates the game state,
+    and returns the updated status including whether the guess was correct.
+
+    Args:
+        game_id (str): The unique identifier of the game.
+        guess (GuessRequest): Request body containing:
+            - letter (str): The letter guessed by the player.
+
+    Returns:
+        GuessResponse: The updated game state including:
+            - status (str): Current game status ("playing", "won", "lost").
+            - guessed_letters (list): Letters guessed so far.
+            - attempts_remaining (int): Remaining attempts.
+            - hint (str): The hint for the word.
+            - masked_word (str): Updated masked word.
+            - word (str, optional): Full word if game is finished.
+            - correct (bool): Indicates whether the guessed letter is in the word.
+
+    Raises:
+        KeyError: If the provided game_id does not exist.
+
+    Behavior:
+        - Checks if the guessed letter is in the word.
+        - Updates the game state via GameService.
+        - Returns the updated game status along with correctness of the guess.
+    """
     word = game_service.games[game_id]['word']
     game_service.guess_letter(game_id=game_id, letter=guess.letter)
     current_game_status = game_service.get_game_status(game_id=game_id)
